@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OCR_Project", "OCR_Project\OCR_Project.vbproj", "{9E91C3D3-B1E6-4182-B58F-3CFF705BAD64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E91C3D3-B1E6-4182-B58F-3CFF705BAD64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E91C3D3-B1E6-4182-B58F-3CFF705BAD64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E91C3D3-B1E6-4182-B58F-3CFF705BAD64}.Debug|x64.ActiveCfg = Debug|x64
+		{9E91C3D3-B1E6-4182-B58F-3CFF705BAD64}.Debug|x64.Build.0 = Debug|x64
+		{9E91C3D3-B1E6-4182-B58F-3CFF705BAD64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E91C3D3-B1E6-4182-B58F-3CFF705BAD64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E91C3D3-B1E6-4182-B58F-3CFF705BAD64}.Release|x64.ActiveCfg = Release|x64
+		{9E91C3D3-B1E6-4182-B58F-3CFF705BAD64}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3713A194-3F34-4871-8800-2754D1B40392}
+	EndGlobalSection
+EndGlobal
