@@ -7,15 +7,24 @@ Imports Emgu.CV.CvEnum
 Imports Emgu.CV.Structure
 Imports Emgu.CV.ML
 
-Imports Microsoft.ML
-Imports Microsoft.ML.Data
 
 
 Imports Numpy
 
 Imports Emgu.TF
-
-
+Imports Emgu.TF.Layers
+Imports Emgu.TF.Optimizers
+Imports Emgu.TF.Metrics
+Imports Keras
+Imports Keras.Layers
+Imports Keras.Models
+Imports Keras.Optimizers
+Imports System.Drawing.Drawing2D
+Imports TensorFlow.losses
+Imports Emgu.CV.UI
+Imports Emgu.CV.Util
+Imports Emgu.CV.Fuzzy.FuzzyInvoke
+Imports Emgu.CV.Dnn
 
 
 Public Class Form1
@@ -202,13 +211,78 @@ Public Class Form1
     End Function
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        'this function build a nural network
-        Dim model As New Keras.Models.Sequential()
-        model.Add(New Keras.Layers.Conv2D(512, kernel_size:=Tuple.Create(3, 3), activation:="relu", input_shape:=(100, 100, 1)))
-        model.Add(New Keras.Layers.MaxPooling2D(pool_size:=Tuple.Create(2, 2)))
-        model.Add(New Keras.Layers.Dense(32, input_shape:=(10, 10), activation:="relu"))
-        model.Add(New Keras.Layers.Dense(1, activation:="sigmoid"))
-        model.Compile(optimizer:="rmsprop", loss:="binary_crossentropy", metrics:={"accuracy"})
+        'this function build a neural network
+
+        'Create a new Sequential model, Sequential is a linear stack of layers.
+        Dim model As New Sequential()
+
+        'Add a Conv2D layer with 32 filters, kernel size of 3x3, ReLU activation function, and input shape of 28x28x1
+        model.Add(New Conv2D(32, kernel_size:=Tuple.Create(3, 3), activation:="relu", input_shape:=(28, 28, 1)))
+
+        'Add a MaxPooling2D layer with a pool size of 2x2
+        model.Add(New MaxPooling2D(pool_size:=Tuple.Create(2, 2)))
+
+        'Add a Dropout layer with a rate of 0.25
+        'Dropout layer to prevent overfitting.
+        'Overfitting occurs when a model is too complex, This can lead to poor performance.
+        model.Add(New Dropout(0.25))
+
+        'Add a Flatten layer
+        'it flattens the output from the convolutional layers into a 1D vector,
+        'which can then be passed to the fully connected layers for classification.
+        'reshapes the output from the convolutional layers into a format that can be processed by the dense layers.
+        model.Add(New Flatten())
+
+
+        'Add a Dense layer with 128 neurons (Dense connect all the neurons in the current layer to all the neurons in the previous layer).
+        'and ReLU activation function is simple and computationally efficient, allowing for faster training.
+        'ReLU produce better results in terms of accuracy and convergence rate.
+        model.Add(New Dense(128, activation:="relu"))
+
+        'Add a Dropout layer with a rate of 0.5
+        model.Add(New Dropout(0.5))
+
+        'Softmax activation function is used on the last layer to convert the final outputs into a probability distribution over the classes.
+        'This allows us to interpret the output as the model's predicted probability for each class, and choose the class with the
+        'highest probability as the final prediction.
+        model.Add(New Dense(10, activation:="softmax"))
+
+        'Adam popular and effective optimization algorithm; calculates the learning rate adaptively
+        'for each parameter in the neural network, It combines the advantages of  Adagrad and RMSProp
+        Dim optimizer As New Adam()
+
+        'Sparse categorical crossentropy loss function is used when the labels are integers
+        'rather than one-hot encoded vectors, which is often the case in classification problems.
+        model.Compile(optimizer, loss:="sparse_categorical_crossentropy", metrics:={"accuracy"})
+
+
+        ' Define the training data
+        Dim x_train(,) As Double = New Double(2, 3) {
+        {0.1, 0.2, 0.3, 0.4},
+        {0.5, 0.6, 0.7, 0.8},
+        {0.9, 0.1, 0.11, 0.12}
+        }
+
+        Dim y_train() As Double = New Double(2) {0, 1, 0}
+
+        Dim x_test As Array = {}
+        Dim y_test As Array = {}
+
+
+        Dim validation_data As Array = {
+            x_test,
+            y_test
+        }
+
+        'train the model.
+        '"epochs" refer to the number of times a dataset is passed through a neural network during training.
+        model.Fit(x_train, y_train, epochs:=10, validation_data:=validation_data)
+
+
+        'predict
+        Dim y_pred = model.Predict(x_test)
+
+
 
     End Sub
 End Class

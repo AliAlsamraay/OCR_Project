@@ -20,10 +20,7 @@
     <PackageReference Include="Emgu.TF" Version="2.10.1.1490" />
     <PackageReference Include="IronPython" Version="3.4.0" />
     <PackageReference Include="Keras.NET" Version="3.8.5" />
-    <PackageReference Include="Microsoft.ML" Version="2.0.1" />
-    <PackageReference Include="Microsoft.ML.DataView" Version="2.0.1" />
     <PackageReference Include="Numpy" Version="3.11.1.33" />
-    <PackageReference Include="NumpyDotNet" Version="0.9.83.6" />
   </ItemGroup>
 
   <ItemGroup>
