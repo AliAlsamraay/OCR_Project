@@ -28,6 +28,8 @@ Partial Class Form1
         Button1 = New Button()
         Button2 = New Button()
         Button4 = New Button()
+        medianChkBox = New CheckBox()
+        GaussianCheckBox = New CheckBox()
         CType(pbImage, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -35,7 +37,7 @@ Partial Class Form1
         ' 
         pbImage.BackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         pbImage.InitialImage = CType(resources.GetObject("pbImage.InitialImage"), Image)
-        pbImage.Location = New Point(374, 95)
+        pbImage.Location = New Point(681, 48)
         pbImage.Name = "pbImage"
         pbImage.Size = New Size(727, 596)
         pbImage.SizeMode = PictureBoxSizeMode.Zoom
@@ -44,7 +46,7 @@ Partial Class Form1
         ' 
         ' Button3
         ' 
-        Button3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Button3.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Button3.Location = New Point(61, 776)
         Button3.Name = "Button3"
         Button3.Size = New Size(249, 133)
@@ -54,7 +56,7 @@ Partial Class Form1
         ' 
         ' Button1
         ' 
-        Button1.Font = New Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point)
+        Button1.Font = New Font("Segoe UI", 15.0F, FontStyle.Regular, GraphicsUnit.Point)
         Button1.Location = New Point(374, 776)
         Button1.Name = "Button1"
         Button1.Size = New Size(239, 133)
@@ -64,7 +66,7 @@ Partial Class Form1
         ' 
         ' Button2
         ' 
-        Button2.Font = New Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point)
+        Button2.Font = New Font("Segoe UI", 14.0F, FontStyle.Regular, GraphicsUnit.Point)
         Button2.Location = New Point(657, 777)
         Button2.Name = "Button2"
         Button2.Size = New Size(217, 133)
@@ -82,12 +84,38 @@ Partial Class Form1
         Button4.Text = "Build CCN"
         Button4.UseVisualStyleBackColor = True
         ' 
+        ' medianChkBox
+        ' 
+        medianChkBox.AutoSize = True
+        medianChkBox.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        medianChkBox.ForeColor = SystemColors.ButtonHighlight
+        medianChkBox.Location = New Point(61, 93)
+        medianChkBox.Name = "medianChkBox"
+        medianChkBox.Size = New Size(206, 42)
+        medianChkBox.TabIndex = 9
+        medianChkBox.Text = "Median Filter"
+        medianChkBox.UseVisualStyleBackColor = True
+        ' 
+        ' GaussianCheckBox
+        ' 
+        GaussianCheckBox.AutoSize = True
+        GaussianCheckBox.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        GaussianCheckBox.ForeColor = SystemColors.ButtonHighlight
+        GaussianCheckBox.Location = New Point(61, 159)
+        GaussianCheckBox.Name = "GaussianCheckBox"
+        GaussianCheckBox.Size = New Size(223, 42)
+        GaussianCheckBox.TabIndex = 9
+        GaussianCheckBox.Text = "Gaussian Filter"
+        GaussianCheckBox.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(12F, 30F)
+        AutoScaleDimensions = New SizeF(12.0F, 30.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DimGray
         ClientSize = New Size(1469, 1025)
+        Controls.Add(GaussianCheckBox)
+        Controls.Add(medianChkBox)
         Controls.Add(Button4)
         Controls.Add(Button2)
         Controls.Add(Button1)
@@ -97,10 +125,13 @@ Partial Class Form1
         Text = "Form1"
         CType(pbImage, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
     Friend WithEvents pbImage As PictureBox
     Friend WithEvents Button3 As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents medianChkBox As CheckBox
+    Friend WithEvents GaussianCheckBox As CheckBox
 End Class
